@@ -53,9 +53,10 @@ function changeDisplayNumWhenClick() {
       else displayNum += float.textContent
     }
 
-    if (displayNum.length <= 16) {
+    if (displayNum.length <= 8) {
       displayNumber(displayNum);
     }
+    displayNum = displayNum.slice(0, 8);
   });
   numbers.forEach(number => {
     number.addEventListener('click', () => {
@@ -64,9 +65,10 @@ function changeDisplayNumWhenClick() {
         num1 = '';
         num2 = '';
       }
-      if (displayNum.length <= 16) {
+      if (displayNum.length <= 8) {
         displayNumber(displayNum);
       }
+      displayNum = displayNum.slice(0, 8);
     });
   });
 }
