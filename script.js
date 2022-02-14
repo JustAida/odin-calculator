@@ -66,6 +66,9 @@ function changeDisplayNumWhenClick() {
         num2 = '';
       }
       if (displayNum.length <= 8) {
+        if (displayNum.length > 1 && displayNum.charAt(0) === '0' && displayNum.charAt(1) !== '.') {
+          displayNum = displayNum.slice(1);
+        }
         displayNumber(displayNum);
       }
       displayNum = displayNum.slice(0, 8);
