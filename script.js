@@ -1,6 +1,6 @@
 // Fucntion to change the display number.
 function displayNumber(num) {
-  const display = document.querySelector(".display-number");
+  const display = document.querySelector('.display-number');
   display.textContent = num;
 }
 
@@ -29,9 +29,9 @@ function divide(num1, num2) {
 function operate(num1, num2, operator) {
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
-  if (operator === "+") {
+  if (operator === '+') {
     return add(num1, num2);
-  } else if (operator === "-") {
+  } else if (operator === '-') {
     return subtract(num1, num2);
   } else if (operator === '*') {
     return multiply(num1, num2);
@@ -123,3 +123,44 @@ equal.addEventListener('click', () => {
   }
 })
 
+// Reset values with clear button.
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', () => {
+  num1 = '';
+  num2 = '';
+  operator = '';
+  displayNum = '';
+  displayNumber(0);
+});
+
+// Add a backspace.
+const backspace = document.querySelector('.backspace');
+backspace.addEventListener('click', () => {
+  if (displayNum !== '') {
+    displayNum = displayNum.slice(0, -1);
+    displayNumber(displayNum);
+  }
+});
+
+// Changing positive and negative number.
+const positiveNegative = document.querySelector('.positive-negative');
+positiveNegative.addEventListener('click', () => {
+  if (displayNum !== '') {
+    if (displayNum.slice(0, 1) === '-') {
+      displayNum = displayNum.slice(1);
+      displayNumber(displayNum);
+    } else {
+      displayNum = '-' + displayNum;
+      displayNumber(displayNum);
+    }
+  }
+})
+
+// Percentage button.
+const percentage = document.querySelector('.percentage');
+percentage.addEventListener('click', () => {
+  if (displayNum !== '') {
+    displayNum = (parseFloat(displayNum) / 100).toString();
+    displayNumber(displayNum);
+  }
+});
