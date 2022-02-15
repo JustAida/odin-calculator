@@ -97,10 +97,11 @@ operators.forEach(op => {
         result = operate(num1, num2, operator);
         operator = op.textContent;
         if (isFloat(result)) result = parseFloat(result).toFixed(2);
-
-        displayNumber(result);
+        
+        // Display another message if the user tries to divide by zero.
+        displayNumber((result === 'Infinity') ? 'You can\'t divide by zero.' : result);
         displayNum = '';
-        num1 = result;
+        num1 = (result === 'Infinity') ? '' : result;
       } else {
         // Allow to change operator if num2 is empty.
         operator = op.textContent;
@@ -122,7 +123,7 @@ equal.addEventListener('click', () => {
     if (isFloat(result)) result = parseFloat(result).toFixed(2);
 
     // Update the display with the result of the operation.
-    displayNumber(result);
+    displayNumber((result === 'Infinity') ? 'You can\'t divide by zero.' : result);
     displayNum = '';
     num1 = result;
   }
