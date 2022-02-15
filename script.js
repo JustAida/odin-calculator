@@ -53,10 +53,10 @@ function changeDisplayNumWhenClick() {
       else displayNum += float.textContent
     }
 
-    if (displayNum.length <= 8) {
+    if (displayNum.length <= 40) {
       displayNumber(displayNum);
     }
-    displayNum = displayNum.slice(0, 8);
+    displayNum = displayNum.slice(0, 40);
   });
   numbers.forEach(number => {
     number.addEventListener('click', () => {
@@ -65,13 +65,13 @@ function changeDisplayNumWhenClick() {
         num1 = '';
         num2 = '';
       }
-      if (displayNum.length <= 8) {
+      if (displayNum.length <= 40) {
         if (displayNum.length > 1 && displayNum.charAt(0) === '0' && displayNum.charAt(1) !== '.') {
           displayNum = displayNum.slice(1);
         }
         displayNumber(displayNum);
       }
-      displayNum = displayNum.slice(0, 8);
+      displayNum = displayNum.slice(0, 40);
     });
   });
 }
@@ -169,3 +169,10 @@ percentage.addEventListener('click', () => {
     displayNumber(displayNum);
   }
 });
+
+// Get the key that is being pressed and add click event on it.
+window.addEventListener('keydown', e => {
+  const keyboard = document.querySelector(`button[data-key="${e.key}"]`);
+  console.log(e.key)
+  keyboard.dispatchEvent(new KeyboardEvent('click'))
+})
